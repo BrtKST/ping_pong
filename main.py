@@ -23,6 +23,8 @@ def draw(player_1,player_2,score_1,score_2,ball):
     pygame.draw.rect(WIN,st.BLUE,player_1)
     pygame.draw.rect(WIN,st.RED,player_2)
     pygame.draw.rect(WIN, st.WHITE, ball)
+    score = font.render("{} : {}".format(score_1,score_2), True, st.WHITE)
+    WIN.blit(score, (WIDTH//2 - score.get_width()//2, 20))
 
     pygame.display.update()
 
@@ -86,6 +88,7 @@ def main():
             ball_dx *= -1
         
         #score board
+        
 
     pygame.quit()
             
