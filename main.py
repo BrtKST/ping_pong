@@ -46,9 +46,12 @@ def main():
 
         draw(player_1, player_2, score_1, score_2, ball)
         print('test')
-
-        if keys[pygame.K_ESCAPE]:
-            run_game = False
+        
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    run_game = False
+            
     pygame.quit()
             
 
