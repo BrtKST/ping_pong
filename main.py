@@ -22,6 +22,7 @@ def draw(player_1,player_2,score_1,score_2,ball):
     WIN.fill(st.GREEN)
     pygame.draw.rect(WIN,st.BLUE,player_1)
     pygame.draw.rect(WIN,st.RED,player_2)
+    pygame.draw.rect(WIN, st.WHITE, ball)
 
     pygame.display.update()
 
@@ -67,6 +68,24 @@ def main():
             player_2.y -= VEL
         if keys[pygame.K_DOWN] and player_2.bottom < HEIGHT:
             player_2.y += VEL 
+
+        #changing ball vector
+        if ball.top <=0 or ball.bottom >= HEIGHT:
+            ball_dy *= -1
+        if ball.colliderect(player_2) or ball.colliderect(player_1):
+            ball_dx *= -1
+
+        #After goal
+        if ball.left <= 0:
+            score_2 += 1
+            ball.center = (WIDTH//2, HEIGHT//2)
+            ball_dx *= -1
+        elif ball.right >= WIDTH:
+            score_1 += 1
+            ball.center = (WIDTH//2, HEIGHT//2)
+            ball_dx *= -1
+        
+        #score board
 
     pygame.quit()
             
